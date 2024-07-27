@@ -9,7 +9,7 @@ const teams = [
   'West Brom', 'West Ham', 'Wolves'
 ];
 
-const teamLogos = {
+const teamLogos: { [key: string]: string } = {
   'Arsenal': '../logo/arsenal.png',
   'Aston Villa': '../logo/aston-villa.png',
   'Bournemouth': '../logo/bournemouth.png',
@@ -75,7 +75,7 @@ export default function Predict() {
       const data = await response.json();
       setPrediction(data);
     } catch (error) {
-      setError(error.message || 'An unexpected error occurred');
+      setError((error as Error).message || 'An unexpected error occurred');
     }
   };
 
