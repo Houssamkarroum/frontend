@@ -137,19 +137,19 @@ export default function HomePage() {
     <div className="text-center py-20 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <style>{infiniteScrollStyles}</style>
       <h1
-        ref={setHeaderRef}
+        // ref={setHeaderRef}
         className={`text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out ${headerInView ? 'transform scale-100 opacity-100' : 'transform scale-75 opacity-0'}`}
       >
         Welcome to the Football Match Prediction App
       </h1>
       <p
-        ref={setDescriptionRef}
+        // ref={setDescriptionRef}
         className={`text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out ${descriptionInView ? 'transform scale-100 opacity-100' : 'transform scale-75 opacity-0'}`}
       >
         Predict match outcomes and analyze football data with ease.
       </p>
       <div
-        ref={setButtonRef}
+        // ref={setButtonRef}
         className={`mb-12 transition-transform duration-700 ease-out ${buttonInView ? 'transform scale-100 opacity-100' : 'transform scale-75 opacity-0'}`}
       >
         <a
