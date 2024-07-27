@@ -110,9 +110,6 @@ const infiniteScrollStyles = `
 
 export default function HomePage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-   const [setHeaderRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [setDescriptionRef, descriptionInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [setButtonRef, buttonInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   
 
   const scrollToElement = (index: number) => {
@@ -138,19 +135,19 @@ export default function HomePage() {
       <style>{infiniteScrollStyles}</style>
       <h1
         // ref={setHeaderRef}
-        className={`text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out ${headerInView ? 'transform scale-100 opacity-100' : 'transform scale-75 opacity-0'}`}
+        className={`text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out`}
       >
         Welcome to the Football Match Prediction App
       </h1>
       <p
         // ref={setDescriptionRef}
-        className={`text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out ${descriptionInView ? 'transform scale-100 opacity-100' : 'transform scale-75 opacity-0'}`}
+        className={`text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out`}
       >
         Predict match outcomes and analyze football data with ease.
       </p>
       <div
         // ref={setButtonRef}
-        className={`mb-12 transition-transform duration-700 ease-out ${buttonInView ? 'transform scale-100 opacity-100' : 'transform scale-75 opacity-0'}`}
+        className={`mb-12 transition-transform duration-700 ease-out `}
       >
         <a
           href="/predict"
