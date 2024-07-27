@@ -132,7 +132,7 @@ export default function HomePage() {
   return (
     
     <div className="text-center py-20 bg-gray-100 dark:bg-gray-900 min-h-screen">
-      <style>{infiniteScrollStyles}</style>
+      
       <h1
         // ref={setHeaderRef}
         className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out"
