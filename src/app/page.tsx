@@ -135,7 +135,7 @@ export default function HomePage() {
       <style>{infiniteScrollStyles}</style>
       <h1
         // ref={setHeaderRef}
-        className={`text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out`}
+        className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out"
       >
         Welcome to the Football Match Prediction App
       </h1>
