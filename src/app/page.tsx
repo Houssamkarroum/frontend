@@ -110,6 +110,9 @@ const infiniteScrollStyles = `
 
 export default function HomePage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+   const [setHeaderRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [setDescriptionRef, descriptionInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [setButtonRef, buttonInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   
 
   const scrollToElement = (index: number) => {
@@ -132,16 +135,16 @@ export default function HomePage() {
   return (
     
     <div className="text-center py-20 bg-gray-100 dark:bg-gray-900 min-h-screen">
-      
+      <style>{infiniteScrollStyles}</style>
       <h1
         // ref={setHeaderRef}
-        className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out"
+        className={`text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out `}
       >
         Welcome to the Football Match Prediction App
       </h1>
       <p
         // ref={setDescriptionRef}
-        className={`text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out`}
+        className={`text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out `}
       >
         Predict match outcomes and analyze football data with ease.
       </p>

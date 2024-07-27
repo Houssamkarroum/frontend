@@ -41,7 +41,44 @@ body[data-theme="dark"] {
   color: white;
   padding: 1rem 0;
 }
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+header h1 {
+  font-size: 1.25rem;
+}
+
+header nav a {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1rem;
+  }
+
+  header nav a {
+    font-size: 0.75rem;
+    padding-top: 10px;
+  }
+
+  .btn-icon {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+}
 .header a {
   color: white;
   font-weight: bold;

@@ -46,19 +46,20 @@ export default function Predict() {
 
   const homeTeamRef = useRef<HTMLSelectElement>(null);
   const awayTeamRef = useRef<HTMLSelectElement>(null);
-
+  const [submittedHomeTeam, setSubmittedHomeTeam] = useState<string | null>(null);
+  const [submittedAwayTeam, setSubmittedAwayTeam] = useState<string | null>(null);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    const homeTeamValue = homeTeamRef.current?.value || '';
-    const awayTeamValue = awayTeamRef.current?.value || '';
-
+    var homeTeamValue = homeTeamRef.current?.value || '';
+    var awayTeamValue = awayTeamRef.current?.value || '';
     if (homeTeamValue === awayTeamValue) {
       setError('Home team and away team cannot be the same.');
       return;
     }
-
+    setSubmittedHomeTeam(homeTeamValue);
+    setSubmittedAwayTeam(awayTeamValue);
     try {
       const response = await fetch('https://backend-b7cp.onrender.com/predict', {
         method: 'POST',
@@ -89,21 +90,21 @@ export default function Predict() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-center text-gray-800 animate-fade-in">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center text-gray-800 animate-fade-in">
         Football Match Prediction
       </h1>
 
       {/* Premier League Section */}
-      <section className="my-12">
-        <div className="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-          <div className="flex flex-col md:flex-row items-center space-x-7 space-y-5">
-            <div className="md:w-2/3 mb-6 md:mb-0">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">Premier League</h2>
-              <p className="text-lg text-gray-700 mb-4">
+      <section className="my-8 sm:my-12">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg animate-slide-up">
+          <div className="flex flex-col md:flex-row items-center space-y-5 md:space-y-0 md:space-x-7">
+            <div className="md:w-2/3 mb-4 sm:mb-6 md:mb-0">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-gray-800">Premier League</h2>
+              <p className="text-base sm:text-lg text-gray-700 mb-2 sm:mb-4">
                 The Premier League is one of the most exciting football leagues in the world, featuring top teams from England and beyond. With high-stakes matches and world-class players, it's a league that captures the hearts of football fans globally.
               </p>
-              <p className="text-lg text-gray-700">
+              <p className="text-base sm:text-lg text-gray-700">
                 Stay updated with the latest match predictions and team performances to enhance your viewing experience and make the most of the thrilling football action.
               </p>
             </div>
@@ -119,12 +120,12 @@ export default function Predict() {
       </section>
 
       {/* Prediction Form */}
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg animate-slide-up">
-        <div className="flex w-full items-center">
+      <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-6 rounded-lg shadow-lg animate-slide-up">
+        <div className="flex flex-col sm:flex-row w-full items-center space-y-4 sm:space-y-0">
           <div className="flex-1 flex flex-col items-center">
             <label className="block text-gray-700 text-sm font-semibold mb-2">
               Home Team:
-              <div className="flex items-center mt-2">
+              <div className="flex flex-col items-center sm:flex-row mt-2">
                 <select
                   ref={homeTeamRef}
                   onChange={(e) => setHomeTeam(e.target.value)}
@@ -140,17 +141,17 @@ export default function Predict() {
                   <img 
                     src={teamLogos[homeTeam]} 
                     alt={homeTeam} 
-                    className="w-18 h-16 ml-4 transition-transform transform hover:scale-105"
+                    className="w-16 h-14 mt-2 sm:mt-0 sm:ml-4 transition-transform transform hover:scale-105"
                   />
                 )}
               </div>
             </label>
           </div>
-          <div className="divider divider-horizontal mx-7">Vs</div>
+          <div className="divider divider-horizontal mx-7 hidden sm:block">Vs</div>
           <div className="flex-1 flex flex-col items-center">
             <label className="block text-gray-700 text-sm font-semibold mb-2">
               Away Team:
-              <div className="flex items-center mt-2">
+              <div className="flex flex-col items-center sm:flex-row mt-2">
                 <select
                   ref={awayTeamRef}
                   onChange={(e) => setAwayTeam(e.target.value)}
@@ -166,7 +167,7 @@ export default function Predict() {
                   <img 
                     src={teamLogos[awayTeam]} 
                     alt={awayTeam} 
-                    className="w-18 h-16 ml-4 transition-transform transform hover:scale-105"
+                    className="w-16 h-14 mt-2 sm:mt-0 sm:ml-4 transition-transform transform hover:scale-105"
                   />
                 )}
               </div>
@@ -175,12 +176,11 @@ export default function Predict() {
         </div>
         <button
           type="submit"
-          className="btn btn-primary w-full py-2 px-4 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 mt-6"
+          className="btn btn-primary w-full py-2 px-4 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 mt-4 sm:mt-6"
         >
           Predict
         </button>
       </form>
-
       {/* Prediction Results */}
       {prediction && (
         <div className="mt-6 p-4 bg-white rounded-lg shadow-md animate-slide-up">
@@ -203,9 +203,9 @@ export default function Predict() {
               ></div>
             </div>
             <div className="flex justify-between mt-2 text-sm text-gray-700">
-              <span>Home team wins probability: {prediction.probability[0]}%</span>
+              <span>{submittedAwayTeam} wins probability: {prediction.probability[0]}%</span>
               <span>Draw probability: {prediction.probability[1]}%</span>
-              <span>Away team wins probability: {prediction.probability[2]}%</span>
+              <span>{submittedHomeTeam} wins probability: {prediction.probability[2]}%</span>
             </div>
           </div>
         </div>
