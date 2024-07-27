@@ -60,7 +60,7 @@ export default function Predict() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/predict', {
+      const response = await fetch('https://backend-b7cp.onrender.com/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
