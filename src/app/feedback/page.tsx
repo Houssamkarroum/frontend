@@ -49,7 +49,7 @@ export default function FeedbackPage() {
   };
 
   return (
-    // <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
+    // <div
     //   <form
     //     onSubmit={handleSubmit}
     //     className="bg-white dark:bg-gray-800  mt-4  p-8 rounded-lg shadow-md w-full max-w-md mb-8"
@@ -142,28 +142,31 @@ export default function FeedbackPage() {
     //     <FeedbackList feedbacks={feedbacks} />
     //   </div>
     // </div>
-    <><div className='flex items-center justify-center mt-40 '><div>We are working on it,be back later</div></div>
-   <div
-  className="mx-auto w-[500px] bg-gray-950 rounded-xl overflow-hidden drop-shadow-xl"
->
-  <div className="bg-[#333] flex items-center p-[5px] text-whitec relative">
-    <div className="flex absolute left-3">
-      <span className="h-3.5 w-3.5 bg-[#ff605c] rounded-xl mr-2"></span>
-      <span className="h-3.5 w-3.5 bg-[#ffbd44] rounded-xl mr-2"></span>
-      <span className="h-3.5 w-3.5 bg-[#00ca4e] rounded-xl"></span>
-    </div>
-    <div className="flex-1 text-center text-white">status</div>
+    <div className="flex flex-col items-center justify-center mt-8 sm:mt-16 lg:mt-32">
+  <div className="text-center text-gray-500 mb-4 sm:mb-6 lg:mb-8">
+    <div className="text-lg sm:text-xl lg:text-2xl">We are working on it, be back later</div>
   </div>
-  <div className="p-2.5 text-[#0f0]">
-    <div>
-      <span className="mr-2">Loading</span>
-      <span className="animate-[ping_1.5s_0.5s_ease-in-out_infinite]">.</span>
-      <span className="animate-[ping_1.5s_0.7s_ease-in-out_infinite]">.</span>
-      <span className="animate-[ping_1.5s_0.9s_ease-in-out_infinite]">.</span>
+
+  <div className="w-full max-w-md mx-4 sm:mx-auto bg-gray-950 rounded-xl overflow-hidden drop-shadow-xl">
+    <div className="bg-[#333] flex items-center p-2 text-white relative">
+      <div className="flex absolute left-3">
+        <span className="h-3.5 w-3.5 bg-[#ff605c] rounded-xl mr-2"></span>
+        <span className="h-3.5 w-3.5 bg-[#ffbd44] rounded-xl mr-2"></span>
+        <span className="h-3.5 w-3.5 bg-[#00ca4e] rounded-xl"></span>
+      </div>
+      <div className="flex-1 text-center text-white text-sm sm:text-base lg:text-lg">status</div>
+    </div>
+    <div className="p-4 text-[#0f0] text-center text-sm sm:text-base lg:text-lg">
+      <div>
+        <span className="mr-2">Loading</span>
+        <span className="animate-[ping_1.5s_0.5s_ease-in-out_infinite]">.</span>
+        <span className="animate-[ping_1.5s_0.7s_ease-in-out_infinite]">.</span>
+        <span className="animate-[ping_1.5s_0.9s_ease-in-out_infinite]">.</span>
+      </div>
     </div>
   </div>
 </div>
 
-</>
+
   );
 }
