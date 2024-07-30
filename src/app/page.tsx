@@ -110,7 +110,7 @@ const infiniteScrollStyles = `
 
 export default function HomePage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-   const [setHeaderRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [setHeaderRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [setDescriptionRef, descriptionInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [setButtonRef, buttonInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   
@@ -138,13 +138,13 @@ export default function HomePage() {
       <style>{infiniteScrollStyles}</style>
       <h1
         // ref={setHeaderRef}
-        className={`text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out `}
+        className={` animate-slide-up text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100 transition-transform duration-700 ease-out `}
       >
         Welcome to the Football Match Prediction App
       </h1>
       <p
         // ref={setDescriptionRef}
-        className={`text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out `}
+        className={`animate-slide-up text-lg mb-6 text-gray-600 dark:text-gray-300 transition-transform duration-700 ease-out `}
       >
         Predict match outcomes and analyze football data with ease.
       </p>
@@ -154,13 +154,13 @@ export default function HomePage() {
       >
         <a
           href="/predict"
-          className="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 mr-4 dark:bg-blue-700 dark:hover:bg-blue-800"
+          className="animate-slide-up inline-block bg-blue-500 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 mr-4 dark:bg-blue-700 dark:hover:bg-blue-800"
         >
           Go to Prediction
         </a>
         <a
           href="/dashboard"
-          className="inline-block bg-gray-800 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-gray-900 transition-transform transform hover:scale-105 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="animate-slide-up inline-block bg-gray-800 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-gray-900 transition-transform transform hover:scale-105 dark:bg-gray-700 dark:hover:bg-gray-600"
         >
           Go to Dashboard
         </a>
@@ -174,10 +174,10 @@ export default function HomePage() {
         
         className={`container mx-auto px-6 mb-20 text-center transition-transform duration-700 ease-out `}
       >
-        <h2 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-8">
+        <h2 className="animate-slide-up text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-8">
           Explore Our Team
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-12">
+        <p className="animate-slide-up text-lg text-gray-600 dark:text-gray-300 mb-12">
           Meet the talented individuals behind the Football Match Prediction App.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -218,7 +218,22 @@ export default function HomePage() {
       </div>
       {/* Divider Section */}
       <div className="my-16 border-t border-gray-300 dark:border-gray-700 mx-auto w-4/5"></div>
+      {/* Feedback Button */}
+      <a
+        href="/feedback"
+        className="animate-slide-up inline-block bg-blue-500 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 dark:bg-blue-700 dark:hover:bg-blue-800"
+      >
+        Give Your Feedback
+      </a>
+      
+      {/* Mockup Code Section */}
+      <div className="mockup-code my-8 mx-auto max-w-lg">
+        <pre data-prefix="$"><code>npm i feedback</code></pre>
+        <pre data-prefix=">" className="text-warning"><code>giving your feedback...</code></pre>
+        <pre data-prefix=">" className="text-success"><code>we are happy!</code></pre>
+      </div>
 
+      {/* Steps Navigation Dropdown */}
       {/* Steps Navigation Dropdown */}
       <div className="fixed bottom-8 left-8 z-50">
         <div className="relative inline-block text-left">
@@ -231,18 +246,26 @@ export default function HomePage() {
           {isDropdownOpen && (
             <div className="absolute left-0 bottom-full mb-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg">
               <div className="py-1">
-                {steps.map((step, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      scrollToElement(index);
-                      setIsDropdownOpen(false);
-                    }}
-                    className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
-                  >
-                    {step.title}
-                  </button>
-                ))}
+                {steps
+                  .filter(step => step.title !== 'Feedback') // Filter out the "Feedback" step
+                  .map((step, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        scrollToElement(index);
+                        setIsDropdownOpen(false);
+                      }}
+                      className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
+                    >
+                      {step.title}
+                    </button>
+                  ))}
+                <a
+                  href="/feedback"
+                  className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
+                >
+                  Feedback
+                </a>
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="block px-4 py-2 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"

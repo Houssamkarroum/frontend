@@ -147,7 +147,7 @@ export default function Predict() {
               </div>
             </label>
           </div>
-          <div className="divider divider-horizontal mx-7 hidden sm:block">Vs</div>
+          <div className="divider divider-horizontal divider-primary  max-md:btn-block">Vs</div>
           <div className="flex-1 flex flex-col items-center">
             <label className="block text-gray-700 text-sm font-semibold mb-2">
               Away Team:

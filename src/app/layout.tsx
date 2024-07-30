@@ -30,18 +30,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <header className="p-3 bg-gray-800 text-white flex justify-between items-center">
           <div className="flex items-center space-x-4 p-2">
-            <img
-              src="../epl.png"
-              alt="EPL logo"
-              className="w-8 h-8 rounded-full"
-            />
-            <h1 className="text-xl font-bold">Football Match Prediction</h1>
+            <a href="/" className="flex items-center space-x-2">
+              <img
+                src="../epl.png"
+                alt="EPL logo"
+                className="w-8 h-8 rounded-full"
+              />
+              <h1 className="text-xl font-bold">Football Match Prediction</h1>
+            </a>
           </div>
           <nav className="flex items-center space-x-4">
             <div className="hidden md:flex space-x-4">
-              <a href="/" className="btn btn-primary text-sm">Home</a>
-              <a href="/predict" className="btn btn-primary text-sm">Prediction</a>
-              <a href="/dashboard" className="btn btn-secondary text-sm">Dashboard</a>
+              <a href="/" className="text-gray-200 hover:text-white transition duration-300">Home</a>
+              <a href="/predict" className="text-gray-200 hover:text-white transition duration-300">Prediction</a>
+              <a href="/dashboard" className="text-gray-200 hover:text-white transition duration-300">Dashboard</a>
               <label className="swap swap-rotate">
                 <input
                   type="checkbox"
