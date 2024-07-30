@@ -25,15 +25,14 @@ export default function FeedbackPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newFeedback: Feedback = {
-      id: '', // Add the 'id' property
+    const newFeedback = {
       author: name,
       feedback,
       role,
       rating,
       datetime: new Date().toISOString(),
     };
-
+  
     const response = await fetch('/api/submit-feedback', {
       method: 'POST',
       headers: {
@@ -41,10 +40,15 @@ export default function FeedbackPage() {
       },
       body: JSON.stringify(newFeedback),
     });
-
+  
     if (response.ok) {
       setAlertVisible(true);
-      setFeedbacks([newFeedback, ...feedbacks]);
+      const responseData = await response.json();
+      const feedbackWithId: Feedback = {
+        id: responseData.id,  // Assuming the server responds with the ID of the new feedback
+        ...newFeedback
+      };
+      setFeedbacks([feedbackWithId, ...feedbacks]);
       setName('');
       setFeedback('');
       setRole('');
