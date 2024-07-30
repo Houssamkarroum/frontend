@@ -10,12 +10,12 @@ export async function GET() {
     const feedbacks: Feedback[] = feedbacksSnapshot.docs.map(doc => {
       const data = doc.data() as DocumentData;
       return {
-        id: doc.id,
+        id: doc.id,  // Make sure to include 'id' here
         author: data.author,
         feedback: data.feedback,
         role: data.role,
         rating: data.rating,
-        datetime: data.datetime.toDate().toISOString(), // Convert here directly
+        datetime: data.datetime.toDate().toISOString(), // Convert Firestore Timestamp to ISO string
       };
     });
 
