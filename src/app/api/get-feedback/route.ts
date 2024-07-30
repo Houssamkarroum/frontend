@@ -11,12 +11,10 @@ export async function GET() {
       id: doc.id,
       ...doc.data()
     })) as Feedback[];
-
     // Convert Firestore Timestamps to ISO strings
     feedbacks.forEach(feedback => {
       (feedback as any).datetime = feedback.datetime.toDate().toISOString();
     });
-
     return NextResponse.json(feedbacks, { status: 200 });
   } catch (error) {
     console.error('Error fetching feedback:', error);
