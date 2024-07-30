@@ -76,10 +76,10 @@ const teamMembers = [
       ]
     },
     {
-      name: 'Bob Smith',
+      name: 'Diouane Hicham',
       role: 'Software Engineer',
-      bio: 'Bob is a skilled software engineer with a passion for building robust and scalable applications. He focuses on backend development and system integration.',
-      imgSrc: '../1.png',
+      bio: 'I am a skilled software engineer and a Big Data and Cloud Computing student at ENSET. I specialize in building robust and scalable applications, with a focus on backend development and system integration.',
+      imgSrc: '../hicham.jpg',
       shortcuts: [
         { key: 'Ctrl', description: 'General control key' },
         { key: 'C', description: 'Copy key' },
@@ -206,7 +206,7 @@ export default function HomePage() {
                 <span className="text-gray-700 dark:text-gray-300 mb-2">Preferred Shortcuts:</span>
                 <div className="flex gap-2">
                   {member.shortcuts.map((shortcut, idx) => (
-                    <kbd key={idx} className="kbd">
+                    <kbd key={idx} className="kbd ">
                       {shortcut.key}
                     </kbd>
                   ))}
