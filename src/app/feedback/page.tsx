@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import FeedbackList from "./FeedbackList";
-import { Feedback } from '../api/get-feedback/types'; // Adjust the path as necessary
+import FeedbackList from './FeedbackList';
 
 export default function FeedbackPage() {
   const [name, setName] = useState('');
@@ -10,7 +9,8 @@ export default function FeedbackPage() {
   const [role, setRole] = useState('');
   const [rating, setRating] = useState(5);
   const [alertVisible, setAlertVisible] = useState(false);
-  const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
+  const [feedbacks, setFeedbacks] = useState<{ author: string; feedback: string; role: string; rating: number; datetime: string; }[]>([]);
+
   useEffect(() => {
     fetch('/api/get-feedback')
       .then(response => {
@@ -19,42 +19,36 @@ export default function FeedbackPage() {
         }
         return response.json();
       })
-      .then(data => setFeedbacks(data as Feedback[])) // Ensure data is cast to Feedback[]
-      .catch(error => console.error('Error fetching feedback:', error));
+      .then(data => setFeedbacks(data))
+      .catch(error => console.error('Error fetching feedback:', error)); // Log the error
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newFeedback = {
-      author: name,
-      feedback,
-      role,
-      rating,
-      datetime: new Date().toISOString(),
-    };
-  
-    const response = await fetch('/api/submit-feedback', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newFeedback),
-    });
-  
-    if (response.ok) {
+    const newFeedback = { author: name, feedback, role, rating, datetime: new Date().toISOString() };
+
+    try {
+      const response = await fetch('/api/submit-feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFeedback),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
       setAlertVisible(true);
-      const responseData = await response.json();
-      const feedbackWithId: Feedback = {
-        id: responseData.id,  // Assuming the server responds with the ID of the new feedback
-        ...newFeedback
-      };
-      setFeedbacks([feedbackWithId, ...feedbacks]);
+      setFeedbacks([newFeedback, ...feedbacks]);
       setName('');
       setFeedback('');
       setRole('');
       setRating(5);
       setTimeout(() => setAlertVisible(false), 3000); // Hide alert after 3 seconds
-    } else {
+    } catch (error) {
+      console.error('Failed to submit feedback:', error); // Log the error
       alert('Failed to submit feedback');
     }
   };

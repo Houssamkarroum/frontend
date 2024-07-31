@@ -18,7 +18,6 @@ export async function GET() {
         datetime: data.datetime.toDate().toISOString(), // Convert Firestore Timestamp to ISO string
       };
     });
-
     return NextResponse.json(feedbacks, { status: 200 });
   } catch (error) {
     console.error('Error fetching feedback:', error);
