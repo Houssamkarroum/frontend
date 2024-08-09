@@ -140,7 +140,7 @@ export default function FeedbackPage() {
           </div>
         )}
       </form>
-      <div className="p-8 rounded-lg shadow-md w-full max-w-5xl bg-white dark:bg-gray-800">
+      <div className="p-8 rounded-lg shadow-md mb-3 w-full max-w-5xl bg-white dark:bg-gray-800">
         <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-100">
           Feedback Submissions
         </h1>
