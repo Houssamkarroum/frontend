@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Head from "next/head";
+import Footer from '../app/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
