@@ -61,6 +61,9 @@ export default function Predict() {
     setSubmittedHomeTeam(homeTeamValue);
     setSubmittedAwayTeam(awayTeamValue);
     try {
+
+
+      
       const response = await fetch('https://backend-b7cp.onrender.com/predict', {
         method: 'POST',
         headers: {
