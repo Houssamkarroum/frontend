@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Head from "next/head";
 import Footer from '../app/components/Footer';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>Football Match Prediction</title>
       </Head>
       <body className={inter.className}>
+        <SpeedInsights />
         <header className="p-3 bg-gray-800 text-white flex justify-between items-center">
           <div className="flex items-center space-x-4 p-2">
             <a href="/" className="flex items-center space-x-2">
